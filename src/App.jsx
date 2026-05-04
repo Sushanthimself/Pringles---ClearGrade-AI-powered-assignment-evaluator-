@@ -117,10 +117,7 @@ export default function App() {
         </div>
       )}
 
-      {/* Footer */}
-      <footer className="app-footer">
-        Built with ♥ by Team Pringles — Powered by AI
-      </footer>
+
     </div>
   );
 }
