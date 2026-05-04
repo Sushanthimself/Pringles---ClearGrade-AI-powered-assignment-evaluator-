@@ -17,11 +17,39 @@
 import React from "react";
 
 export default function SubmissionInput({ essay, onEssayChange, onSubmit, loading }) {
-  // TODO: Ab — build this component
+  const handleChange = (e) => {
+    onEssayChange(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!loading && essay.trim()) {
+      onSubmit();
+    }
+  };
+
   return (
     <div className="submission-input">
       <h2>📄 Student Submission</h2>
-      <p style={{ color: "#888" }}>Ab — build your component here</p>
+
+      <form onSubmit={handleSubmit}>
+        <textarea
+          id="essay-textarea"
+          placeholder="Paste or type the student's essay here..."
+          value={essay}
+          onChange={handleChange}
+          rows={12}
+          disabled={loading}
+        />
+
+        <button
+          id="evaluate-btn"
+          type="submit"
+          disabled={loading || !essay.trim()}
+        >
+          {loading ? "⏳ Evaluating..." : "🚀 Evaluate"}
+        </button>
+      </form>
     </div>
   );
 }
